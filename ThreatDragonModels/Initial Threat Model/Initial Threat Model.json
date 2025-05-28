@@ -135,8 +135,8 @@
           },
           {
             "position": {
-              "x": 290,
-              "y": 80
+              "x": 210,
+              "y": 220
             },
             "size": {
               "width": 60,
@@ -254,8 +254,8 @@
           },
           {
             "position": {
-              "x": 370,
-              "y": 320
+              "x": 530,
+              "y": 310
             },
             "size": {
               "width": 60,
@@ -373,7 +373,7 @@
           },
           {
             "position": {
-              "x": 620,
+              "x": 640,
               "y": 80
             },
             "size": {
@@ -558,7 +558,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Auth Request",
+              "name": "Authentication Request",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -570,7 +570,7 @@
               "threats": []
             },
             "labels": [
-              "Auth Request"
+              "Authentication Request"
             ],
             "id": "08d4941d-2c81-4e1f-8deb-0950d2a15020",
             "source": {
@@ -583,24 +583,124 @@
             },
             "vertices": [
               {
-                "x": 350,
-                "y": 213
-              },
-              {
-                "x": 380,
-                "y": 250
-              },
-              {
-                "x": 410,
-                "y": 180
-              },
-              {
                 "x": 410,
                 "y": 250
               },
               {
                 "x": 430,
                 "y": 260
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Authentication Results",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Authentication Results"
+            ],
+            "id": "ce48f7e8-1020-4d71-9dfd-05bf6fcf3b96",
+            "source": {
+              "cell": "48539d6d-4a68-4d9f-ac39-bf0d24a2bc62",
+              "port": "6150a7d4-eaf3-42da-914d-881fec6fe2f2"
+            },
+            "target": {
+              "cell": "2c25981c-0425-489d-a514-2077e4083099",
+              "port": "8a508d5d-771e-4ea3-b067-8a13bb6f4889"
+            },
+            "vertices": [
+              {
+                "x": 610,
+                "y": 290
+              },
+              {
+                "x": 640,
+                "y": 250
+              },
+              {
+                "x": 690,
+                "y": 250
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Check Credentials",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Check Credentials"
+            ],
+            "id": "3872ac4e-0a6f-44e0-80c0-47c4c348a842",
+            "source": {
+              "cell": "48539d6d-4a68-4d9f-ac39-bf0d24a2bc62",
+              "port": "f85a44b8-dcdc-4645-b458-6ed2f281190f"
+            },
+            "target": {
+              "cell": "2c25981c-0425-489d-a514-2077e4083099",
+              "port": "555548bd-3731-400c-8296-bcacd6fa8cdb"
+            },
+            "vertices": [
+              {
+                "x": 560,
+                "y": 250
+              },
+              {
+                "x": 610,
+                "y": 180
               }
             ]
           }
