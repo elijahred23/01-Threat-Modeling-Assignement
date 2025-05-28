@@ -19,6 +19,32 @@
         "cells": [
           {
             "position": {
+              "x": 156.5,
+              "y": 280
+            },
+            "size": {
+              "width": 160,
+              "height": 120
+            },
+            "attrs": {
+              "label": {
+                "text": "Server Trust Boundary"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "eb7a0688-5bed-413a-be2b-4253019a7acb",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Server Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
               "x": 90,
               "y": 60
             },
@@ -147,8 +173,8 @@
                 "text": "Web Application"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -244,12 +270,60 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "6312e8eb-91b0-40d1-a434-2ab5592f9ca7",
+                  "title": "SQL Injection",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Attackers could add SQL injection to change, corrupt, or delete data in the database if user input for comments is not adequately validated.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                },
+                {
+                  "id": "fb27df28-b88e-4bf1-916e-c3c0b5af7abc",
+                  "title": "Unauthorized Access to MotD",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Users could get to the Message of the Day without logging in or see someone else's custom message if there isn't proper session control or access checks.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "e44c7a8b-0ea9-479c-94e3-5ae417c3df53",
+                  "title": "Denial of Service through Comment Spamming",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "An attacker could send a lot of automated calls to the endpoint for posting comments, which would make the application or database too busy to work properly.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -266,8 +340,8 @@
                 "text": "Authentication Component"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -363,12 +437,47 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "6c04a325-8c3e-4715-b854-0c4084dca305",
+                  "title": "Credential Interception",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "An attacker could use old flaws in the open-source authentication module to steal or intercept user passwords as they are being sent.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                },
+                {
+                  "id": "fbf1c67a-724b-4a82-8ae4-6ae29a2f76f5",
+                  "title": "Not Checking for Failed Authentication",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Attackers could brute force login credentials without being caught if failed tries aren't logged or tracked.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -824,7 +933,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Show Message of the Day\n",
+              "name": "Retrieve Message of the Day\n",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -836,27 +945,75 @@
               "threats": []
             },
             "labels": [
-              "Show Message of the Day\n"
+              "Retrieve Message of the Day\n"
             ],
-            "id": "4d73eb0f-8edb-4fe4-b951-b56c2c344dac",
+            "id": "15ba7329-7146-480e-9f2d-d5cb24f1cc8b",
             "source": {
-              "cell": "fb4f967f-8975-4c43-be6c-d338835fa7a3",
-              "port": "f85a44b8-dcdc-4645-b458-6ed2f281190f"
+              "cell": "c850848a-d413-44ba-8d35-0afdf80afe8d",
+              "port": "721d66fd-8a21-49e0-949c-260b659fdc74"
             },
             "target": {
-              "cell": "c850848a-d413-44ba-8d35-0afdf80afe8d",
-              "port": "c601aa73-719f-4776-af19-81200b265c6a"
+              "cell": "2c25981c-0425-489d-a514-2077e4083099",
+              "port": "6fa38dda-9817-4bde-b98d-99cb42cd2edf"
             },
             "vertices": [
               {
-                "x": 280,
-                "y": 210
+                "x": 410,
+                "y": 40
               },
               {
-                "x": 166,
-                "y": 210
+                "x": 540,
+                "y": 70
+              },
+              {
+                "x": 670,
+                "y": 70
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Store Comment",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Store Comment"
+            ],
+            "id": "ac03e321-d07f-4e59-9359-bb81ac8cb67f",
+            "source": {
+              "x": 270,
+              "y": 340
+            },
+            "target": {
+              "cell": "2c25981c-0425-489d-a514-2077e4083099",
+              "port": "8b165e14-b193-4861-af33-ea7094ad3331"
+            }
           },
           {
             "shape": "flow",
@@ -940,7 +1097,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Retrieve Message of the Day\n",
+              "name": "Show Message of the Day\n",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -952,75 +1109,27 @@
               "threats": []
             },
             "labels": [
-              "Retrieve Message of the Day\n"
+              "Show Message of the Day\n"
             ],
-            "id": "15ba7329-7146-480e-9f2d-d5cb24f1cc8b",
+            "id": "4d73eb0f-8edb-4fe4-b951-b56c2c344dac",
             "source": {
-              "cell": "c850848a-d413-44ba-8d35-0afdf80afe8d",
-              "port": "721d66fd-8a21-49e0-949c-260b659fdc74"
+              "cell": "fb4f967f-8975-4c43-be6c-d338835fa7a3",
+              "port": "f85a44b8-dcdc-4645-b458-6ed2f281190f"
             },
             "target": {
-              "cell": "2c25981c-0425-489d-a514-2077e4083099",
-              "port": "6fa38dda-9817-4bde-b98d-99cb42cd2edf"
+              "cell": "c850848a-d413-44ba-8d35-0afdf80afe8d",
+              "port": "c601aa73-719f-4776-af19-81200b265c6a"
             },
             "vertices": [
               {
-                "x": 410,
-                "y": 40
+                "x": 280,
+                "y": 210
               },
               {
-                "x": 540,
-                "y": 70
-              },
-              {
-                "x": 670,
-                "y": 70
+                "x": 166,
+                "y": 210
               }
             ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Store Comment",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Store Comment"
-            ],
-            "id": "ac03e321-d07f-4e59-9359-bb81ac8cb67f",
-            "source": {
-              "x": 270,
-              "y": 340
-            },
-            "target": {
-              "cell": "2c25981c-0425-489d-a514-2077e4083099",
-              "port": "8b165e14-b193-4861-af33-ea7094ad3331"
-            }
           }
         ],
         "description": "test"
@@ -1028,6 +1137,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "test",
-    "threatTop": 0
+    "threatTop": 5
   }
 }
